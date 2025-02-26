@@ -1,0 +1,77 @@
+<!-- html/admin.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统管理面板</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-dashboard">
+        <header>
+            <h1>智能周期控制系统</h1>
+            <div id="sys-time"></div>
+        </header>
+
+        <section class="config-panel">
+            <div class="real-time-status">
+                <h2>实时状态监控</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <label>当前模式:</label>
+                        <span id="current-mode" class="mode-indicator">N/A</span>
+                    </div>
+                    <div class="status-item">
+                        <label>周期时长:</label>
+                        <span id="current-duration">--</span>
+                    </div>
+                    <div class="status-item">
+                        <label>下次重置:</label>
+                        <span id="next-reset">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="configuration-form">
+                <h2>周期参数设置</h2>
+                <form id="configForm">
+                    <div class="form-group triple-column">
+                        <div>
+                            <label>自然日周期</label>
+                            <button type="button" onclick="setNatural()">恢复24小时模式</button>
+                        </div>
+                        <div>
+                            <label>自定义秒数</label>
+                            <input type="number" id="customSec" 
+                                   min="1" max="86399" placeholder="输入秒数">
+                        </div>
+                        <div>
+                            <label>持续时间(秒)</label>
+                            <input type="number" id="persistSec" 
+                                   min="0" placeholder="0=永久">
+                        </div>
+                    </div>
+                    <button type="submit" class="apply-btn">应用设置</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="history-log">
+            <h2>操作审计日志</h2>
+            <table id="auditLog">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>操作类型</th>
+                        <th>参数</th>
+                        <th>执行结果</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>
